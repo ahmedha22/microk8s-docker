@@ -13,7 +13,7 @@ permissions:
   packages: write
 
 env:
-  IMAGE: ghcr.io/${{ github.repository }}
+  IMAGE: 'ghcr.io/${{ github.repository }}'
 
 jobs:
   build-publish-update:
@@ -34,11 +34,12 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.IMAGE }}:${{ github.sha }}
+          tags: '${{ env.IMAGE }}:${{ github.sha }}'
 
       - name: Update Kubernetes image
         shell: bash
-        run: sed -i "s|image: .*|image: $IMAGE:${GITHUB_SHA}|" components/app.yaml
+        run: |
+          sed -i "s|image: .*|image: ${IMAGE}:${GITHUB_SHA}|" components/app.yaml
 
       - name: Commit Kubernetes image update
         uses: stefanzweifel/git-auto-commit-action@v5

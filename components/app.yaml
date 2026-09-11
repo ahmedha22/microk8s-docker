@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
       - name: web
-        image: nginx:alpine
+        image: ghcr.io/ahmedha22/microk8s-docker:replace-me
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
 ---

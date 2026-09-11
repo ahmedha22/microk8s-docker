@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: ghcr.io/ahmedha22/microk8s-docker:replace-me
+        image: ghcr.io/ahmedha22/microk8s-docker:93643f03baabba57722caaf22de22dd0e7bfe312
         imagePullPolicy: Always
         ports:
         - containerPort: 80

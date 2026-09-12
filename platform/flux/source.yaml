@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: microk8s-docker
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://github.com/ahmedha22/microk8s-docker.git
+  ref:
+    branch: main

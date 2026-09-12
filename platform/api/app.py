@@ -25,7 +25,11 @@ def database_status():
 
 @app.get("/")
 def home():
-    return jsonify({"app": "platform-api", "message": "Docker and Kubernetes practice app"})
+    return jsonify({
+        "app": "platform-api",
+        "message": "Docker and Kubernetes practice app",
+        "author": "Ahmed Hassan",
+    })
 
 
 @app.get("/health")

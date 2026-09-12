@@ -61,3 +61,14 @@ the `components` directory and enables automated sync, pruning, and self-healing
 
 `components/secrets.yaml` contains a plain-text test password. Do not use that
 password or commit real credentials for anything beyond a local test cluster.
+
+## Second practice app
+
+The `platform` directory contains a separate Flask API and PostgreSQL practice
+application. It uses two workflows and Flux CD instead of Argo CD:
+
+- `platform-ci.yml` tests and publishes the API image.
+- `platform-cd.yml` updates the GitOps image tag.
+- Flux CD watches `platform/k8s` and deploys the change.
+
+See `platform/README.md` for local Compose and MicroK8s instructions.

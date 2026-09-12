@@ -1,0 +1,34 @@
+name: Platform CD
+
+on:
+  workflow_run:
+    workflows: [Platform CI]
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  update-gitops:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Update API image tag
+        env:
+          IMAGE: ghcr.io/${{ github.repository }}-platform-api
+          IMAGE_TAG: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          sed -i "s|image: .*|image: ${IMAGE}:${IMAGE_TAG}|" platform/k8s/api.yaml
+
+      - name: Commit GitOps change
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Deploy platform API ${{ github.event.workflow_run.head_sha }}"
+          file_pattern: platform/k8s/api.yaml

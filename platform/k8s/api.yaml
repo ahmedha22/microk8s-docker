@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: ghcr.io/ahmedha22/microk8s-docker-platform-api:c720cb504d25de9f0c2e99fb5637d06510e18f63
+          image: ghcr.io/ahmedha22/microk8s-docker-platform-api:192ca8da8df72ddca3724391d1585f5816a99c0c
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

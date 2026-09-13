@@ -9,6 +9,6 @@ resources:
 configMapGenerator:
   - name: platform-schema
     files:
-      - schema.sql=../api/schema.sql
+      - schema.sql=schema.sql
     options:
       disableNameSuffixHash: true

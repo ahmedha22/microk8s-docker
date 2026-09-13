@@ -38,6 +38,10 @@ jobs:
       - name: Check Python syntax
         run: python -m py_compile platform/api/app.py
 
+      - name: Run API tests
+        working-directory: platform/api
+        run: pytest -q
+
       - name: Log in to GHCR
         if: github.event_name == 'push'
         uses: docker/login-action@v3

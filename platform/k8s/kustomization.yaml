@@ -3,4 +3,12 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - postgres.yaml
+  - migration.yaml
   - api.yaml
+
+configMapGenerator:
+  - name: platform-schema
+    files:
+      - schema.sql=../api/schema.sql
+    options:
+      disableNameSuffixHash: true

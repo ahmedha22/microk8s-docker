@@ -25,6 +25,7 @@ services:
       retries: 10
     volumes:
       - postgres-data:/var/lib/postgresql/data
+      - ./api/schema.sql:/docker-entrypoint-initdb.d/001_schema.sql:ro
 
 volumes:
   postgres-data:

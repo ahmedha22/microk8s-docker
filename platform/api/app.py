@@ -29,6 +29,7 @@ def home():
         "app": "platform-api",
         "message": "Docker and Kubernetes practice app",
         "author": "Ahmed Hassan",
+        "version": "v2-change-test",
     })
 
 
